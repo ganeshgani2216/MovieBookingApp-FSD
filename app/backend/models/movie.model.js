@@ -1,9 +1,9 @@
 module.exports = (mongoose) => {
     const Movie = mongoose.model(
-      "movie",
+      "movies",
       mongoose.Schema(
         {
-          movieid: { type: number, required: true },
+          movieid: { type: Number, required: true },
           title: { type: String },
           published: Boolean,
           released: Boolean,
@@ -14,10 +14,36 @@ module.exports = (mongoose) => {
           },
           release_date: { type: date },
           publish_date: { type: date },
+          artists: [{
+            artistid: Number,
+          first_name: String,
+          last_name: String,
+          wiki_url: String,
+          profile_url: String,
+          movies: [],
         },
-        { timestamps: true }
-      )
-    );
+      ],
+      genres: [String],
+      duration: Number,
+      critic_rating: Number,
+      trailer_url: String,
+      wiki_url: String,
+      story_line: String,
+      shows: [
+        {
+          id: Number,
+          theatre: {
+            name: String,
+            city: String,
+          },
+          language: String,
+          show_timing: Date,
+          available_seats: String,
+          unit_price: Number,
+        },
+      ],
+    })
+  );
 
-    return Movie;
-  }; 
+  return Movie;
+};
