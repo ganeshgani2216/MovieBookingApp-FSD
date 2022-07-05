@@ -1,6 +1,6 @@
-const auth = require("../../middleware/auth"); 
+const auth = require("../middleware/auth"); 
 
-module.exports = app => {
+module.exports = (app) => {
   const users = require("../controllers/user.controller");
 
     var router = require("express").Router();
@@ -15,5 +15,5 @@ module.exports = app => {
 
     router.post("/bookShow ", auth, users.bookShow);
 
-    app.use('/api', router);
+    app.use("/api", router);
   };

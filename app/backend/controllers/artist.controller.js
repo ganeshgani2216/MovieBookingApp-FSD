@@ -1,16 +1,10 @@
 const db = require("../models");
-const Artist = db.artist;
-
-exports.findAllArtist = (req, res) => {
-  Artist.find({})
-    .select("artist")
-    .distinct("artist")
-    .then((data) => {
-      res.send(data);
-    })
-    .catch((err) => {
-      res.status(500).send({
-        message: err.message || "Internal error occured",
-      });
-    });
-};
+const Artist = db.artists;
+async function findAllArtists(req,res){
+  const data= await db.artists.find({});
+  //console.log(data);
+  res.json(data);
+}
+module.exports={
+  findAllArtists
+}
